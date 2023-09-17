@@ -9,8 +9,7 @@ namespace OpgaveUge2.Controllers
     public class DrawCardController : ControllerBase
     {
         IList<Card> Cards = new List<Card>();
-        String[] colors = new String[] {"Diamonds", "Clubs", "Spades", "Hearts"};
-
+        readonly string[] colors = new string[] {"Diamonds", "Clubs", "Spades", "Hearts"};
 
         [HttpGet(Name = "FindCard")]
         public Card Get()
@@ -36,8 +35,8 @@ namespace OpgaveUge2.Controllers
                 Cards.Add(card);
             }
 
-            Random rnd = new Random();
-            int randomCard = rnd.Next(0, Cards.Count);
+            Random rnd = new();
+            int randomCard = rnd.Next(Cards.Count);
 
             return Cards[randomCard];
         }
